@@ -19,7 +19,7 @@ const TicketCard = () => {
 
         {/* Description */}
         <p className="mt-1 text-xs text-base-content/70 leading-relaxed">
-          Customer is unable to log in to their account. They have tried
+          Customer is unable to log in their account. They have tried
           resetting their password multiple times but still cannot access it.
         </p>
 
