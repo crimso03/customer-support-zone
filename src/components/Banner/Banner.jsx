@@ -24,7 +24,7 @@ const Banner = () => {
 
       <img className='absolute -bottom-1 -left-1  opacity-20 pointer-events-none ' src={vector1} alt="" />
 
-  <div className="card-body items-center">
+  <div className="card-body items-center relative z-10">
     <p className='text-xl'>Resolved</p>
     <h1 className='text-3xl font-bold'>0</h1>
   </div>
