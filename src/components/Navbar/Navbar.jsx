@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Navbar = () => {
+const Navbar = ({newAdd}) => {
   return (
     <div className="navbar bg-base-100 shadow-sm w-11/12 mx-auto mb-15">
   <div className="navbar-start">
@@ -29,9 +29,9 @@ const Navbar = () => {
     <a className="link link-hover">Download</a>
     <a className="link link-hover">Contact</a>
   </div>
-  <div className="navbar-end">
+  <button onClick={newAdd} className="navbar-end">
     <a className="btn bg-linear-to-r from-[#632EE3] to-[#9F62F2]">+ New</a>
-  </div>
+  </button>
 </div>
   );
 };

@@ -1,0 +1,18 @@
+.status-open {
+  background-color: #B9F8CF;
+  color: #0B5E06;
+}
+
+.status-progress {
+  background-color: #F8F3B9;
+  color: #9C7700            ;
+}
+
+
+.dot-open {
+  background-color: #02A53B;
+}
+
+.dot-progress {
+  background-color: #FEBB0C;
+}

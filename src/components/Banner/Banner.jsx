@@ -1,7 +1,7 @@
 import React from 'react';
 import vector1 from "../../assets/vector1.png"
 import vector2 from "../../assets/vector2.png"
-const Banner = () => {
+const Banner = ({progressCount,resolvedCount}) => {
   return (
     <div className='grid grid-cols-2 gap-6 justify-center w-11/12 mx-auto'>
 
@@ -13,7 +13,7 @@ const Banner = () => {
 
   <div className="card-body items-center relative z-10">
     <p className='text-xl'>In-Progress</p>
-    <h1 className='text-3xl font-bold'>0</h1>
+    <h1 className='text-3xl font-bold'>{progressCount}</h1>
   </div>
 </div>
 
@@ -26,7 +26,7 @@ const Banner = () => {
 
   <div className="card-body items-center relative z-10">
     <p className='text-xl'>Resolved</p>
-    <h1 className='text-3xl font-bold'>0</h1>
+    <h1 className='text-3xl font-bold'>{resolvedCount}</h1>
   </div>
 </div>
     </div>

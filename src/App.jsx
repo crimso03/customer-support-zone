@@ -1,20 +1,71 @@
-import { useState } from 'react'
+import { Suspense, useState } from 'react'
 import './App.css'
 import Navbar from './components/Navbar/Navbar'
 import Banner from './components/Banner/Banner'
 import TicketCard from './components/TicketCard/TicketCard'
+import CustomerTickets from './components/CustomerTickets/CustomerTickets'
+import TaskStatus from './components/TaskStatus/TaskStatus'
+import { ToastContainer } from 'react-toastify';
+
+const fetchTickets= async()=>{
+  const res = await fetch("/tickets.json")
+  return res.json()
+
+}
+
+
 function App() {
+
+  const ticketsPromise = fetchTickets();
+
+  const [tasks, setTasks] = useState([]);
+  const [resolved, setResolved] = useState(0);
+
+  const handleAddTask = (ticket) => {
+
+    const alreadyAdded = tasks.find((t) => t.id === ticket.id);
+
+    if (alreadyAdded) return;
+
+    setTasks([...tasks, ticket]);
+  };
+
+   const handleCompleteTask = (id) => {
+
+    const updatedTasks = tasks.filter((task) => task.id !== id);
+
+    setTasks(updatedTasks);
+    setResolved(resolved + 1); 
+  };
 
   return (
     <>
-      <Navbar></Navbar>
-      <Banner></Banner>
-      <div className="grid md:grid-cols-2 gap-4">
+      <Navbar newAdd={()=>alert("Created New Ticket")}></Navbar>
+      <Banner progressCount={tasks.length} resolvedCount={resolved}></Banner>
+
+      <div className="w-11/12 mx-auto mt-6">
+
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-6">
+
+          <Suspense fallback={<span className="loading loading-spinner text-accent"></span>}>
+        <CustomerTickets ticketsPromise={ticketsPromise} onSelectTicket={handleAddTask}></CustomerTickets>
+
+      </Suspense>
+
+        <TaskStatus tasks={tasks} onComplete={handleCompleteTask}></TaskStatus>
+        </div>
+
+      </div>
+
+      
+
+
+      {/* <div className="grid md:grid-cols-2 gap-4">
   <TicketCard />
   <TicketCard />
   <TicketCard />
   <TicketCard />
-</div>
+</div> */}
     </>
   )
 }
