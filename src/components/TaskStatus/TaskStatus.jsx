@@ -14,8 +14,9 @@ const TaskStatus = ({tasks,onComplete}) => {
 
         </p>
 
+
         <div className="mt-4 space-y-4">
-          
+
 
           {tasks.length === 0 ? (
             <div className="rounded-xl border border-base-400 p-4 text-xs">
@@ -28,12 +29,16 @@ const TaskStatus = ({tasks,onComplete}) => {
                 className="flex items-center justify-between gap-3 rounded-xl border border-base-300 p-4"
               >
                 <p className="text-xs font-medium leading-snug">
+
                   {task.title}
+
                 </p>
 
                 <button
                   className="btn btn-success btn-l"
+
                   onClick={() => onComplete(task.id)}
+
                 >
                   Complete
                 </button>
