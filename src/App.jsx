@@ -5,7 +5,7 @@ import Banner from './components/Banner/Banner'
 import TicketCard from './components/TicketCard/TicketCard'
 import CustomerTickets from './components/CustomerTickets/CustomerTickets'
 import TaskStatus from './components/TaskStatus/TaskStatus'
-import { ToastContainer } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 
 const fetchTickets= async()=>{
   const res = await fetch("/tickets.json")
@@ -25,9 +25,13 @@ function App() {
 
     const alreadyAdded = tasks.find((t) => t.id === ticket.id);
 
-    if (alreadyAdded) return;
+    if (alreadyAdded) {
+      toast.error("Ticket already added!");
+      return;
+    }
 
     setTasks([...tasks, ticket]);
+    toast.success("Ticket added to Task Status!");
   };
 
    const handleCompleteTask = (id) => {
@@ -36,11 +40,12 @@ function App() {
 
     setTasks(updatedTasks);
     setResolved(resolved + 1); 
+    toast("Task completed successfully");
   };
 
   return (
     <>
-      <Navbar newAdd={()=>alert("Created New Ticket")}></Navbar>
+      <Navbar newAdd={()=>toast("Created New Ticket")}></Navbar>
       <Banner progressCount={tasks.length} resolvedCount={resolved}></Banner>
 
       <div className="w-11/12 mx-auto mt-6">
@@ -57,15 +62,8 @@ function App() {
 
       </div>
 
-      
+      <ToastContainer />
 
-
-      {/* <div className="grid md:grid-cols-2 gap-4">
-  <TicketCard />
-  <TicketCard />
-  <TicketCard />
-  <TicketCard />
-</div> */}
     </>
   )
 }
