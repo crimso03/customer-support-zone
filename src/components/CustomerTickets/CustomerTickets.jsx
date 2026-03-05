@@ -1,4 +1,4 @@
-import React, { use } from 'react';
+import{ use } from 'react';
 import TicketCard from '../TicketCard/TicketCard';
 
 const CustomerTickets = ({ticketsPromise,onSelectTicket}) => {
@@ -7,13 +7,13 @@ const CustomerTickets = ({ticketsPromise,onSelectTicket}) => {
     return (
         <div className='w-11/12 mx-auto'>
             <div>
-                <h2>Customer Tickets</h2>
+                <h2 className='text-2xl font-semibold'>Customer Tickets</h2>
 
                 <div className='grid md:grid-cols-2 gap-4'>
 
                     {
                         ticketsData.map((t)=>(
-                            <TicketCard key={t.id} ticket={t} onSelect={onSelectTicket}/>
+                            <TicketCard key={t?.id} ticket={t} onSelect={onSelectTicket}/>
                         ))
                     
                         

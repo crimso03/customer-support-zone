@@ -10,9 +10,12 @@ const TaskStatus = ({tasks,onComplete}) => {
 
         <p className="mt-1 text-xs">
           Select a ticket to add to Task Status
+
+
         </p>
 
         <div className="mt-4 space-y-4">
+          
 
           {tasks.length === 0 ? (
             <div className="rounded-xl border border-base-400 p-4 text-xs">
